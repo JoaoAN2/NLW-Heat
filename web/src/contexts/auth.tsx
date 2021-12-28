@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/api";
 
+const CLIENT_ID = "afd61e2c1caadb4334f4"
+
 type User = {
     id: string;
     avatar_url: string;
@@ -33,11 +35,12 @@ type AuthProvider = {
 export function AuthProvider(props: AuthProvider) {
     const [user, setUser] = useState<User | null>(null);
 
-    const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=afd61e2c1caadb4334f4`;
+    const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${CLIENT_ID}`;
 
     async function signIn(githubCode: string) {
         const response = await api.post<AuthResponse>('authenticate', {
             code: githubCode,
+            CLIENT_ID: CLIENT_ID
         });
         const { token, user } = response.data;
         localStorage.setItem("@jao:token", token);

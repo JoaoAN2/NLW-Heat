@@ -3,12 +3,13 @@
     "name": "mobile",
     "slug": "mobile",
     "version": "1.0.0",
+    "scheme": "mobile",
     "orientation": "portrait",
     "icon": "./assets/icon-nlw.png",
     "splash": {
       "image": "./assets/splash-nlw.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#09090A"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,7 +23,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon-nlw.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#09090A"
       }
     },
     "web": {

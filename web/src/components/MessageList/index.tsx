@@ -49,7 +49,8 @@ export function MessageList() {
 
                 {messages.map(message => {
                     return (
-                        <li key={message.id} className={styles.message}>
+                        <li key={message.id || "sendByUser"} className={styles.message}>
+                            {console.log(message)}
                             <p className={styles.messageContent}>{message.text}</p>
                             <div className={styles.messageUser}>
                                 <div className={styles.userImage}>

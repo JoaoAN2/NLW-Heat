@@ -14,6 +14,7 @@ class CreateMessageService {
         });
 
         const infoWS = {
+			id: message.id,
 			text: message.text,
 			user_id: message.user_id,
 			created_at: message.created_at,
@@ -22,6 +23,8 @@ class CreateMessageService {
 				avatar_url: message.user.avatar_url
 			}
 		};
+
+		console.log(infoWS);
 
 		io.emit("new_message", infoWS);
 

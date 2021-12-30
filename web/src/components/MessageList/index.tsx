@@ -14,6 +14,7 @@ type Message = {
     }
 }
 
+let cont = 0;
 const messagesQueue: Message[] = [];
 const socket = io("http://localhost:3100");
 socket.on("new_message", (newMessage: Message) => {
@@ -49,8 +50,7 @@ export function MessageList() {
 
                 {messages.map(message => {
                     return (
-                        <li key={message.id || "sendByUser"} className={styles.message}>
-                            {console.log(message)}
+                        <li key={ message.id || cont++ } className={styles.message}>
                             <p className={styles.messageContent}>{message.text}</p>
                             <div className={styles.messageUser}>
                                 <div className={styles.userImage}>

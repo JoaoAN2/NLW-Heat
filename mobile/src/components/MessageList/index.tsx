@@ -10,7 +10,6 @@ import { Message, MessageProps } from "../Message"
 import { styles } from './styles';
 
 let messagesQueue: MessageProps[] = [];
-let messagesLength = 0;
 
 const socket = io(String(api.defaults.baseURL));
 socket.on('new_message', (newMessage) => {

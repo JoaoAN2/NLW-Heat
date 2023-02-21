@@ -18,29 +18,29 @@ class AuthenticateUserService {
     async execute(code: string, CLIENT_ID: string) {
         const url = "https://github.com/login/oauth/access_token";
 
-        const { data: accessTokenResponse } = CLIENT_ID === process.env.GITHUB_CLIENT_ID_WEB ? 
-        
-        await axios.post<IAccessTokenResponse>(url, null, {
-            params: {
-                client_id: process.env.GITHUB_CLIENT_ID_WEB,
-                client_secret: process.env.GITHUB_CLIENT_SECRET_WEB,
-                code
-            },
-            headers: {
-                "Accept": "application/json"
-            }
-        }) :
+        const { data: accessTokenResponse } = CLIENT_ID === process.env.GITHUB_CLIENT_ID_WEB ?
 
-        await axios.post<IAccessTokenResponse>(url, null, {
-            params: {
-                client_id: process.env.GITHUB_CLIENT_ID_MOBILE,
-                client_secret: process.env.GITHUB_CLIENT_SECRET_MOBILE,
-                code
-            },
-            headers: {
-                "Accept": "application/json"
-            }
-        });
+            await axios.post<IAccessTokenResponse>(url, null, {
+                params: {
+                    client_id: process.env.GITHUB_CLIENT_ID_WEB,
+                    client_secret: process.env.GITHUB_CLIENT_SECRET_WEB,
+                    code
+                },
+                headers: {
+                    "Accept": "application/json"
+                }
+            }) :
+
+            await axios.post<IAccessTokenResponse>(url, null, {
+                params: {
+                    client_id: process.env.GITHUB_CLIENT_ID_MOBILE,
+                    client_secret: process.env.GITHUB_CLIENT_SECRET_MOBILE,
+                    code
+                },
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
 
         const response = await axios.get<IUserResponse>("https://api.github.com/user", {
             headers: {
